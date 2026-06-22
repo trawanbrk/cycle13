@@ -3,6 +3,7 @@ import { SEO } from "@/lib/seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SEO.siteUrl),
   title: SEO.title,
   description: SEO.description,
   openGraph: {
