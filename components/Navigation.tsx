@@ -4,16 +4,26 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navItems = [
-  { href: "/", label: "Главная" },
-  { href: "/year-map", label: "Карта года" },
-  { href: "/cycle", label: "Текущий цикл" },
-  { href: "/logic", label: "Логика" },
-  { href: "/moon", label: "Лунный ритм" },
+  { href: "/", label: "Сегодня" },
+  { href: "/week", label: "Неделя" },
+  { href: "/cycle", label: "Цикл" },
+  { href: "/year", label: "Год" },
+  { href: "/method", label: "Метод" },
+  { href: "/moon", label: "Луна" },
   { href: "/about", label: "О проекте" },
 ];
 
 export default function Navigation() {
   const pathname = usePathname();
+
+  // Map old routes to new for active state
+  const normalizePath = (p: string) => {
+    if (p === "/logic") return "/method";
+    if (p === "/year-map") return "/year";
+    return p;
+  };
+
+  const current = normalizePath(pathname);
 
   return (
     <nav className="border-b border-[#2a2a32] bg-[#0f0f12]/95 backdrop-blur sticky top-0 z-50">
@@ -21,11 +31,11 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-14">
           <Link href="/" className="flex items-center gap-2 font-bold text-lg tracking-tight">
             <span className="text-[#C89B3C]">◈</span>
-            <span>Cycle OS</span>
+            <span>Cycle13</span>
           </Link>
           <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = current === item.href;
               return (
                 <Link
                   key={item.href}
@@ -48,7 +58,7 @@ export default function Navigation() {
             </summary>
             <div className="absolute top-14 left-0 right-0 bg-[#0f0f12] border-b border-[#2a2a32] py-2 px-4 flex flex-col gap-1">
               {navItems.map((item) => {
-                const isActive = pathname === item.href;
+                const isActive = current === item.href;
                 return (
                   <Link
                     key={item.href}

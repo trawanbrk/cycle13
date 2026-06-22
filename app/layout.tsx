@@ -19,9 +19,7 @@ export const metadata: Metadata = {
     description: SEO.ogDescription,
     images: [{ url: SEO.ogImage }],
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
+  icons: { icon: "/favicon.ico" },
 };
 
 export default function RootLayout({

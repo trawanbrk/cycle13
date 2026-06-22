@@ -1,11 +1,11 @@
-// Cycle OS - SEO metadata
+// Cycle13 — SEO metadata
 export const SEO = {
-  title: "Cycle OS — карта текущей недели",
-  description: "Открытая операционная карта года: текущий цикл, карта недели, действия, KPI и фокус недели.",
-  ogTitle: "Cycle OS — карта текущей недели",
-  ogDescription: "Узнай текущий цикл, карту недели и практический фокус: действия, KPI и чего избегать.",
+  title: "Cycle13 — календарь фокуса, карт, луны и действий",
+  description: "Cycle13 помогает понять фокус недели, лунный режим и выбрать конкретное действие дня.",
+  ogTitle: "Cycle13 — календарь фокуса, карт, луны и действий",
+  ogDescription: "Карта недели, лунный режим и конкретное действие дня. Открой — увидь фокус — сделай — зафиксируй.",
   ogType: "website",
   ogImage: "/og-image.png",
-  siteName: "Cycle OS",
+  siteName: "Cycle13",
   siteUrl: "https://cycle13.peso27.ru",
 };

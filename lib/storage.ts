@@ -1,9 +1,9 @@
-// Cycle OS — LocalStorage (browser only, no server data)
+// Cycle13 — LocalStorage (browser only, no server data)
 import type { Mode } from "./constants";
 
-const SELECTED_MODE_KEY = "cycle-os:selected-mode";
-const FOCUS_KEY_PREFIX = "cycle-os:focus";
-const CHECKLIST_KEY_PREFIX = "cycle-os:checklist";
+const SELECTED_MODE_KEY = "cycle13:selected-mode";
+const FOCUS_KEY_PREFIX = "cycle13:focus";
+const CHECKLIST_KEY_PREFIX = "cycle13:checklist";
 
 export function getSelectedMode(): Mode | null {
   if (typeof window === "undefined") return null;

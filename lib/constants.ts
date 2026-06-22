@@ -1,4 +1,4 @@
-// Cycle OS — Constants
+// Cycle13 — Constants
 
 export const START_DATE = "2025-12-29"; // Fixed anchor: Monday, start of first full week around Jan 1 2026
 

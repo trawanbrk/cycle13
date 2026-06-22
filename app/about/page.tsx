@@ -1,112 +1,75 @@
+import type { Metadata } from "next";
+import { SEO } from "@/lib/seo";
 import AppShell from "@/components/AppShell";
 
-export const metadata = {
-  title: "О проекте - Cycle OS",
-  description:
-    "Cycle OS - авторская символико-операционная модель для структурирования недели через фокус, действия и результат.",
+export const metadata: Metadata = {
+  title: `${SEO.title} — О проекте`,
+  description: "Cycle13 — календарь фокуса для предпринимателей, создателей и людей в трансформации.",
 };
 
 export default function AboutPage() {
   return (
     <AppShell>
       <div className="space-y-6 max-w-3xl">
-        <div>
-          <h1 className="text-2xl font-bold mb-1">О проекте</h1>
-          <p className="text-[#888892] text-sm">
-            Cycle OS &mdash; открытая операционная карта года.
-          </p>
-        </div>
+        <h1 className="text-2xl sm:text-3xl font-bold text-[#e8e8ec] tracking-tight">О проекте</h1>
 
-        <div className="rounded-xl border border-[#2a2a32] bg-[#1a1a20] p-5 space-y-3">
-          <h2 className="text-lg font-bold">Что такое Cycle OS</h2>
-          <p className="text-[#888892] text-sm">
-            Cycle OS &mdash; авторская символико-операционная карта года через 13
-            циклов, 52 недели, 4 фазы и символику колоды. Её задача &mdash; дать
-            недельный ритм фокуса, действий и результата.
+        <section className="space-y-2">
+          <h2 className="text-lg text-[#e8e8ec] font-medium">Что такое Cycle13</h2>
+          <p className="text-[#c8c8cc] text-sm leading-relaxed">
+            Cycle13 — календарь фокуса, который соединяет карты, лунный ритм и конкретные действия дня.
+            Карта показывает тему недели. Луна показывает режим движения. Действия показывают, что сделать сегодня.
+            Итог показывает, что зафиксировать.
           </p>
-        </div>
+        </section>
 
-        <div className="rounded-xl border border-[#2a2a32] bg-[#1a1a20] p-5 space-y-3">
-          <h2 className="text-lg font-bold">Зачем использовать</h2>
-          <p className="text-[#888892] text-sm">
-            Сайт даёт практический ответ на вопрос: «Где мы сейчас в цикле года и
-            что конкретно делать на этой неделе?»
+        <section className="space-y-2">
+          <h2 className="text-lg text-[#e8e8ec] font-medium">Для чего он нужен</h2>
+          <p className="text-[#c8c8cc] text-sm leading-relaxed">
+            Чтобы не просто планировать задачи, а понимать контекст недели: в каком цикле ты находишься,
+            какая тема работает, в каком режиме двигаться и что конкретно сделать сегодня.
           </p>
-          <div className="text-sm text-[#888892]">
-            Формула применения:
-            <div className="mt-2 flex flex-wrap items-center gap-2">
-              <span className="px-2 py-1 rounded bg-[#0f0f12] border border-[#2a2a32] text-[#e8e8ec]">
-                неделя
-              </span>
-              <span className="text-[#555560]">&rarr;</span>
-              <span className="px-2 py-1 rounded bg-[#0f0f12] border border-[#2a2a32] text-[#e8e8ec]">
-                фокус
-              </span>
-              <span className="text-[#555560]">&rarr;</span>
-              <span className="px-2 py-1 rounded bg-[#0f0f12] border border-[#2a2a32] text-[#e8e8ec]">
-                действия
-              </span>
-              <span className="text-[#555560]">&rarr;</span>
-              <span className="px-2 py-1 rounded bg-[#0f0f12] border border-[#2a2a32] text-[#e8e8ec]">
-                итог
-              </span>
-            </div>
-          </div>
-        </div>
+        </section>
 
-        <div className="rounded-xl border border-[#2a2a32] bg-[#1a1a20] p-5 space-y-3">
-          <h2 className="text-lg font-bold">Почему старт 29.12.2025</h2>
-          <p className="text-[#888892] text-sm">
-            29 декабря 2025 года &mdash; понедельник, старт первой полной недели
-            вокруг 1 января 2026. Это фиксированный авторский якорь системы. Дату
-            старта нельзя изменить через интерфейс &mdash; она жёстко зафиксирована
-            в коде.
-          </p>
-        </div>
+        <section className="space-y-2">
+          <h2 className="text-lg text-[#e8e8ec] font-medium">Для кого</h2>
+          <ul className="text-[#c8c8cc] text-sm space-y-1.5">
+            <li className="flex gap-2"><span className="text-[#C89B3C]">•</span>Для тех, кто хочет лучше держать фокус</li>
+            <li className="flex gap-2"><span className="text-[#C89B3C]">•</span>Для тех, кто любит недельное планирование</li>
+            <li className="flex gap-2"><span className="text-[#C89B3C]">•</span>Для предпринимателей, создателей, специалистов</li>
+            <li className="flex gap-2"><span className="text-[#C89B3C]">•</span>Для людей в личной трансформации</li>
+            <li className="flex gap-2"><span className="text-[#C89B3C]">•</span>Для тех, кому нужен мягкий ритм действий, а не жёсткий таск-менеджер</li>
+          </ul>
+        </section>
 
-        <div className="rounded-xl border border-[#C89B3C]/30 bg-gradient-to-br from-[#1a1a20] to-[#0f0f12] p-5 space-y-3">
-          <h2 className="text-lg font-bold text-[#C89B3C]">Дисклеймер</h2>
-          <p className="text-[#888892] text-sm">
-            Cycle OS &mdash; авторская символико-операционная модель. Она не
-            является научным, религиозным, историческим или предсказательным
-            стандартом. Её задача &mdash; помочь структурировать неделю через
-            фокус, действия и результат.
-          </p>
-          <div className="pt-2 border-t border-[#2a2a32] text-xs text-[#555560]">
-            Это не гадание. Это не древняя система. Это не предсказание. Это
-            операционная карта недели.
-          </div>
-        </div>
+        <section className="space-y-2">
+          <h2 className="text-lg text-[#e8e8ec] font-medium">Чем это не является</h2>
+          <ul className="text-[#c8c8cc] text-sm space-y-1.5">
+            <li className="flex gap-2"><span className="text-[#888892]">✗</span>Не гадание</li>
+            <li className="flex gap-2"><span className="text-[#888892]">✗</span>Не предсказание событий</li>
+            <li className="flex gap-2"><span className="text-[#888892]">✗</span>Не религиозная система</li>
+            <li className="flex gap-2"><span className="text-[#888892]">✗</span>Не медицинская рекомендация</li>
+            <li className="flex gap-2"><span className="text-[#888892]">✗</span>Не финансовая рекомендация</li>
+          </ul>
+        </section>
 
-        <div className="rounded-xl border border-[#2a2a32] bg-[#1a1a20] p-5 space-y-3">
-          <h2 className="text-lg font-bold">Roadmap</h2>
+        <section className="space-y-2">
+          <h2 className="text-lg text-[#e8e8ec] font-medium">Roadmap</h2>
           <div className="space-y-2 text-sm">
-            <div>
-              <span className="text-[#C89B3C] font-mono text-xs">v1.1</span>
-              <span className="text-[#888892] ml-2">
-                улучшенные локальные заметки, история недель, печатная версия
-              </span>
-            </div>
-            <div>
-              <span className="text-[#C89B3C] font-mono text-xs">v1.2</span>
-              <span className="text-[#888892] ml-2">
-                AI Week Architect, генерация плана недели по карте
-              </span>
-            </div>
-            <div>
-              <span className="text-[#C89B3C] font-mono text-xs">v1.3</span>
-              <span className="text-[#888892] ml-2">
-                приватный личный кабинет, база данных, личные планы
-              </span>
-            </div>
-            <div>
-              <span className="text-[#C89B3C] font-mono text-xs">v1.4</span>
-              <span className="text-[#888892] ml-2">
-                публичный SaaS, подписка, разные режимы
-              </span>
-            </div>
+            <div className="flex gap-2"><span className="text-[#C89B3C] font-mono shrink-0">v1.2</span><span className="text-[#c8c8cc]">карты + луна + действия</span></div>
+            <div className="flex gap-2"><span className="text-[#888892] font-mono shrink-0">v1.3</span><span className="text-[#888892]">локальные заметки / итоги</span></div>
+            <div className="flex gap-2"><span className="text-[#888892] font-mono shrink-0">v1.4</span><span className="text-[#888892]">режимы Life / Business / Creator / Founder</span></div>
+            <div className="flex gap-2"><span className="text-[#888892] font-mono shrink-0">v1.5</span><span className="text-[#888892]">AI Week Architect</span></div>
+            <div className="flex gap-2"><span className="text-[#888892] font-mono shrink-0">v2.0</span><span className="text-[#888892]">персональные сценарии</span></div>
           </div>
-        </div>
+        </section>
+
+        <section className="rounded-lg border border-[#2a2a32] bg-[#1a1a20] p-4">
+          <p className="text-[#555560] text-xs leading-relaxed">
+            Cycle13 — авторская символико-операционная модель. Она не является научным, религиозным,
+            историческим или предсказательным стандартом. Её задача — помочь структурировать неделю
+            через фокус, действия и результат.
+          </p>
+        </section>
       </div>
     </AppShell>
   );
