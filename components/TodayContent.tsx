@@ -63,7 +63,7 @@ export default function TodayContent({ testDate }: Props) {
       {/* Micro-copy */}
       {!joker && week && (
         <p className="text-[#555560] text-xs">
-          Не нужно делать всё. Выбери одно действие и закрой его сегодня.
+          Не нужно делать всё. Выбери один уровень действия и закрой его сегодня.
         </p>
       )}
 

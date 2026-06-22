@@ -183,12 +183,16 @@ export default function DailyCheckIn({ date, weekId, card, eveningQuestion }: Pr
         <p className="text-xs text-[#555560]">
           Данные сохраняются только в браузере на этом устройстве. Без аккаунта и сервера.
         </p>
+        <p className="text-[#555560] text-xs">Лучше короткий честный итог, чем идеальная запись.</p>
       </div>
 
       {/* History */}
-      {history.length > 0 && (
+      {history.length > 0 ? (
         <div className="rounded-xl border border-[#2a2a32] bg-[#1a1a20] p-5">
-          <div className="text-xs text-[#555560] uppercase tracking-wider mb-3">Последние 7 дней</div>
+          <div className="flex items-center justify-between mb-3">
+            <div className="text-xs text-[#555560] uppercase tracking-wider">Последние 7 дней</div>
+            <span className="text-[#555560] text-xs">История хранится только на этом устройстве</span>
+          </div>
           <div className="space-y-2">
             {history.map((h) => (
               <div key={h.date} className="flex items-center gap-3 text-sm">
@@ -200,6 +204,10 @@ export default function DailyCheckIn({ date, weekId, card, eveningQuestion }: Pr
               </div>
             ))}
           </div>
+        </div>
+      ) : (
+        <div className="rounded-xl border border-[#2a2a32] bg-[#1a1a20] p-5 text-center">
+          <p className="text-[#555560] text-sm">История появится после первого сохранённого чек-ина.</p>
         </div>
       )}
     </div>

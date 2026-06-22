@@ -27,6 +27,22 @@ export default function YearPage() {
         <h1 className="text-2xl sm:text-3xl font-bold text-[#e8e8ec] tracking-tight">Год</h1>
         <p className="text-[#888892] text-sm">13 циклов × 4 недели = 52 недели + Джокер-неделя</p>
 
+        {/* Legend */}
+        <div className="flex gap-3 flex-wrap text-xs">
+          <span className="flex items-center gap-1.5 text-[#888892]"><span className="w-2 h-2 rounded-full bg-[#555560]"></span>Прошло</span>
+          <span className="flex items-center gap-1.5 text-[#C89B3C]"><span className="w-2 h-2 rounded-full bg-[#C89B3C]"></span>Сейчас</span>
+          <span className="flex items-center gap-1.5 text-[#555560]"><span className="w-2 h-2 rounded-full border border-[#555560]"></span>Впереди</span>
+          <span className="flex items-center gap-1.5 text-[#888892]"><span className="text-sm">🃏</span>Джокер-неделя</span>
+        </div>
+
+        {/* How to read the year */}
+        <div className="rounded-xl border border-[#2a2a32] bg-[#1a1a20] p-5">
+          <div className="text-xs text-[#555560] uppercase tracking-wider mb-2">Как читать год</div>
+          <p className="text-[#c8c8cc] text-sm leading-relaxed">
+            13 циклов = 13 больших тем года. Каждый цикл длится 28 дней и проходит через 4 недели: очистить → соединить → сделать → зафиксировать. 52 карты = 52 недельных фокуса. Джокер-неделя = ревизия года и подготовка нового цикла.
+          </p>
+        </div>
+
         {/* Cycle table */}
         <div className="space-y-3">
           {Object.entries(cycles).map(([cycleNum, cycleWeeks]) => {
