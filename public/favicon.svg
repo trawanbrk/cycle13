@@ -1,4 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <rect width="64" height="64" rx="12" fill="#0f0f12"/>
-  <text x="32" y="44" text-anchor="middle" font-size="40" fill="#C89B3C" font-family="Arial, sans-serif" font-weight="bold">◈</text>
+  <!-- Diamond/rhombus shape (◈ equivalent) -->
+  <g transform="translate(32,32)">
+    <!-- Outer diamond -->
+    <path d="M 0,-18 L 18,0 L 0,18 L -18,0 Z" fill="none" stroke="#C89B3C" stroke-width="3" stroke-linejoin="round"/>
+    <!-- Inner diamond -->
+    <path d="M 0,-8 L 8,0 L 0,8 L -8,0 Z" fill="#C89B3C" opacity="0.85"/>
+    <!-- Center dot -->
+    <circle cx="0" cy="0" r="2.5" fill="#0f0f12"/>
+  </g>
 </svg>
