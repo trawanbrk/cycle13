@@ -60,6 +60,13 @@ export default function TodayContent({ testDate }: Props) {
         </p>
       </div>
 
+      {/* Micro-copy */}
+      {!joker && week && (
+        <p className="text-[#555560] text-xs">
+          Не нужно делать всё. Выбери одно действие и закрой его сегодня.
+        </p>
+      )}
+
       {/* Joker week */}
       {joker && (
         <div className="rounded-2xl border border-[#C89B3C]/30 bg-gradient-to-b from-[#1a1a20] to-[#15151a] p-5 sm:p-7 space-y-4">
@@ -101,8 +108,8 @@ export default function TodayContent({ testDate }: Props) {
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="rounded-lg border border-[#2a2a32] bg-[#1a1a20] p-3">
               <div className="flex justify-between text-xs text-[#555560] mb-1">
-                <span>Неделя</span>
-                <span className="font-mono">{progress.dayInWeek}/7</span>
+                <span>День недели</span>
+                <span className="font-mono">{progress.dayInWeek} из 7</span>
               </div>
               <div className="h-1.5 bg-[#0f0f12] rounded-full overflow-hidden">
                 <div className="h-full bg-[#888892] rounded-full" style={{ width: `${progress.weekPercent}%` }} />
@@ -110,8 +117,8 @@ export default function TodayContent({ testDate }: Props) {
             </div>
             <div className="rounded-lg border border-[#2a2a32] bg-[#1a1a20] p-3">
               <div className="flex justify-between text-xs text-[#555560] mb-1">
-                <span>Цикл</span>
-                <span className="font-mono">{progress.dayInCycle}/28</span>
+                <span>День цикла</span>
+                <span className="font-mono">{progress.dayInCycle} из 28</span>
               </div>
               <div className="h-1.5 bg-[#0f0f12] rounded-full overflow-hidden">
                 <div className="h-full bg-[#C89B3C] rounded-full" style={{ width: `${progress.cyclePercent}%` }} />

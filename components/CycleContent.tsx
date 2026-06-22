@@ -25,6 +25,7 @@ export default function CycleContent({ testDate }: Props) {
       {validTestDate && <TestDateBanner date={testDate!} />}
 
       <h1 className="text-2xl sm:text-3xl font-bold text-[#e8e8ec] tracking-tight">Цикл</h1>
+      <p className="text-[#555560] text-xs">Цикл работает как 4 шага: очистить → соединить → сделать → зафиксировать.</p>
 
       {joker && (
         <div className="rounded-2xl border border-[#C89B3C]/30 bg-[#1a1a20] p-5 space-y-3">

@@ -24,8 +24,8 @@ export default function TodayCard({ week, date, dateString, isJoker }: Props) {
         </div>
         {!isJoker && (
           <div className="flex gap-3 text-xs text-[#555560]">
-            <span>День недели: <span className="text-[#888892]">{progress.dayInWeek}/7</span></span>
-            <span>День цикла: <span className="text-[#888892]">{progress.dayInCycle}/28</span></span>
+            <span>День недели: <span className="text-[#888892]">{progress.dayInWeek} из 7</span></span>
+            <span>День цикла: <span className="text-[#888892]">{progress.dayInCycle} из 28</span></span>
           </div>
         )}
       </div>
@@ -59,14 +59,14 @@ export default function TodayCard({ week, date, dateString, isJoker }: Props) {
       </div>
 
       {/* Cycle info */}
-      <div className="flex gap-4 text-sm">
+      <div className="flex gap-4 text-sm flex-wrap">
         <div>
-          <span className="text-[#555560]">Цикл </span>
-          <span className="text-[#e8e8ec] font-mono">{week.cycleNumber}/13</span>
+          <span className="text-[#555560]">Цикл года </span>
+          <span className="text-[#e8e8ec] font-mono">{week.cycleNumber} из 13</span>
         </div>
         <div>
-          <span className="text-[#555560]">Неделя </span>
-          <span className="text-[#e8e8ec] font-mono">{week.weekIndexInCycle}/4</span>
+          <span className="text-[#555560]">Неделя цикла </span>
+          <span className="text-[#e8e8ec] font-mono">{week.weekIndexInCycle} из 4</span>
         </div>
         <div>
           <span className="text-[#555560]">Масть </span>

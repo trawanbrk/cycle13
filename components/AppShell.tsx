@@ -9,7 +9,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       </main>
       <footer className="border-t border-[#2a2a32] mt-12 py-6 text-center text-[#555560] text-sm">
         <div className="max-w-6xl mx-auto px-4">
-          Cycle13 — календарь фокуса, карт, луны и действий. Не является научным, религиозным, историческим или предсказательным стандартом.
+          Cycle13 — календарь фокуса и действий. Не предсказание, не гадание, не религиозная система.
         </div>
       </footer>
     </div>

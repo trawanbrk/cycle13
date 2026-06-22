@@ -14,7 +14,7 @@ export default function MoonPage() {
       <div className="space-y-6 max-w-3xl">
         <h1 className="text-2xl sm:text-3xl font-bold text-[#e8e8ec] tracking-tight">Луна</h1>
         <p className="text-[#888892] text-sm">
-          Луна не предсказывает события. Она задаёт ритм движения.
+          Луна в Cycle13 не предсказывает события. Она задаёт режим внимания: начать, усилить, проявить или завершить.
         </p>
 
         <div className="space-y-3">

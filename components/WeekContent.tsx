@@ -25,6 +25,7 @@ export default function WeekContent({ testDate }: Props) {
       {validTestDate && <TestDateBanner date={testDate!} />}
 
       <h1 className="text-2xl sm:text-3xl font-bold text-[#e8e8ec] tracking-tight">Неделя</h1>
+      <p className="text-[#555560] text-xs">Неделя считается пройденной не по настроению, а по зафиксированным действиям и выводам.</p>
 
       {joker && (
         <div className="rounded-2xl border border-[#C89B3C]/30 bg-[#1a1a20] p-5 sm:p-7 space-y-4">
@@ -70,8 +71,8 @@ export default function WeekContent({ testDate }: Props) {
               </div>
 
               <div className="flex gap-4 text-sm flex-wrap">
-                <div><span className="text-[#555560]">Цикл </span><span className="text-[#e8e8ec]">{week.cycleNumber}/13 — {week.cycleRank}</span></div>
-                <div><span className="text-[#555560]">Неделя </span><span className="text-[#e8e8ec]">{week.weekIndexInCycle}/4</span></div>
+                <div><span className="text-[#555560]">Цикл года </span><span className="text-[#e8e8ec]">{week.cycleNumber} из 13 — {week.cycleRank}</span></div>
+                <div><span className="text-[#555560]">Неделя цикла </span><span className="text-[#e8e8ec]">{week.weekIndexInCycle} из 4</span></div>
                 <div><span className="text-[#555560]">Масть </span><span className="text-[#e8e8ec]">{suitInfo.name}</span></div>
               </div>
 
