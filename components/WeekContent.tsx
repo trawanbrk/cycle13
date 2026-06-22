@@ -82,6 +82,31 @@ export default function WeekContent({ testDate }: Props) {
                 <p className="text-[#c8c8cc] text-sm leading-relaxed">{week.plainMeaning}</p>
               </div>
 
+              {/* Formula */}
+              <div className="rounded-lg p-4 border" style={{ borderColor: `${suitInfo.color}40`, background: `${suitInfo.color}08` }}>
+                <div className="text-xs uppercase tracking-wider mb-1" style={{ color: suitInfo.color }}>Формула недели</div>
+                <p className="text-[#e8e8ec] text-sm font-medium">{week.shortFormula}</p>
+              </div>
+
+              {/* Action Mode */}
+              <div className="rounded-lg border border-[#22222a] bg-[#0f0f12] p-4 space-y-2">
+                <div className="text-xs text-[#555560] uppercase tracking-wider mb-2">Действие по энергии</div>
+                <div className="grid gap-2">
+                  <div className="flex gap-3 rounded bg-[#1a1a20] p-2">
+                    <span className="text-[#888892] text-xs font-mono shrink-0 w-20">Минимум</span>
+                    <span className="text-[#c8c8cc] text-sm">{week.dailyMinimum}</span>
+                  </div>
+                  <div className="flex gap-3 rounded bg-[#1a1a20] p-2">
+                    <span className="text-[#e8e8ec] text-xs font-mono shrink-0 w-20">Нормально</span>
+                    <span className="text-[#e8e8ec] text-sm">{week.dailyNormal}</span>
+                  </div>
+                  <div className="flex gap-3 rounded bg-[#1a1a20] p-2">
+                    <span className="text-[#C89B3C] text-xs font-mono shrink-0 w-20">Максимум</span>
+                    <span className="text-[#c8c8cc] text-sm">{week.dailyMaximum}</span>
+                  </div>
+                </div>
+              </div>
+
               {/* Main question */}
               <div className="rounded-lg bg-[#1a1a20] border border-[#2a2a32] p-4">
                 <div className="text-xs text-[#555560] uppercase tracking-wider mb-1">Главный вопрос недели</div>
@@ -150,6 +175,18 @@ export default function WeekContent({ testDate }: Props) {
             <div className="rounded-xl bg-[#1a1a20] border border-[#2a2a32] p-4">
               <div className="text-xs text-[#555560] uppercase tracking-wider mb-1">Вечерний вопрос</div>
               <p className="text-[#e8e8ec] text-sm italic">{week.eveningQuestion}</p>
+            </div>
+
+            {/* What to record */}
+            <div className="rounded-xl border border-[#2a2a32] bg-[#1a1a20] p-5">
+              <div className="text-xs text-[#555560] uppercase tracking-wider mb-3">Что зафиксировать</div>
+              <div className="flex gap-2 flex-wrap">
+                {week.whatToRecord.map((r, i) => (
+                  <span key={i} className="text-xs px-2 py-1 rounded-md bg-[#0f0f12] border border-[#22222a] text-[#888892]">
+                    {r}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* Navigation */}

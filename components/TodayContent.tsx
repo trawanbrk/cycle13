@@ -67,6 +67,10 @@ export default function TodayContent({ testDate }: Props) {
         </p>
       )}
 
+      {!joker && !week && (
+        <p className="text-[#888892] text-sm">Собираем карту дня…</p>
+      )}
+
       {/* Joker week */}
       {joker && (
         <div className="rounded-2xl border border-[#C89B3C]/30 bg-gradient-to-b from-[#1a1a20] to-[#15151a] p-5 sm:p-7 space-y-4">

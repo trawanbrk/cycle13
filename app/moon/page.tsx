@@ -46,6 +46,17 @@ export default function MoonPage() {
           </div>
         </div>
 
+        {/* Why moon and suit may not match */}
+        <div className="rounded-xl border border-[#2a2a32] bg-[#1a1a20] p-5">
+          <div className="text-xs text-[#555560] uppercase tracking-wider mb-2">Почему фаза и масть могут не совпадать</div>
+          <p className="text-[#c8c8cc] text-sm leading-relaxed">
+            Масти и луна — это два разных слоя. Масть задаёт недельную сферу внутри 28-дневного цикла.
+            Лунная фаза задаёт текущий режим движения. Они не обязаны совпадать один к одному.
+            Cycle13 соединяет оба слоя: например, Черви могут идти в режиме убывающей луны —
+            тогда фокус людей и доверия проходит через завершение, очистку, выводы и закрытие подвисших разговоров.
+          </p>
+        </div>
+
         <div className="rounded-lg border border-[#2a2a32] bg-[#1a1a20] p-4">
           <p className="text-[#555560] text-xs leading-relaxed">
             Лунный слой используется как ритм рефлексии и планирования, а не как точный астрономический

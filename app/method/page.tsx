@@ -112,6 +112,18 @@ export default function MethodPage() {
           </div>
         </section>
 
+        {/* Example: how to read a card */}
+        <section className="space-y-3">
+          <h2 className="text-lg text-[#e8e8ec] font-medium">Как читать карту на примере 7♥</h2>
+          <div className="rounded-lg border border-[#2a2a32] bg-[#1a1a20] p-4 space-y-2 text-sm">
+            <div><span className="text-[#B8453A] font-mono">7</span> = стратегия, глубина, анализ</div>
+            <div><span className="text-[#B8453A] font-mono">♥</span> = люди, энергия, доверие</div>
+            <div><span className="text-[#888892]">Убывающая луна</span> = завершить, очистить, подвести итоги</div>
+            <div><span className="text-[#C89B3C]">Действие</span> = закрыть подвисший разговор</div>
+            <div><span className="text-[#C89B3C]">Итог</span> = понять, кто усиливает, кто забирает энергию</div>
+          </div>
+        </section>
+
         {/* Formula */}
         <section className="rounded-xl border border-[#C89B3C]/30 bg-[#1a1a20] p-5 text-center">
           <div className="text-[#e8e8ec] text-lg font-medium">

@@ -53,15 +53,26 @@ export default function AboutPage() {
         </section>
 
         <section className="space-y-2">
+          <h2 className="text-lg text-[#e8e8ec] font-medium">Приватность</h2>
+          <ul className="text-[#c8c8cc] text-sm space-y-1.5">
+            <li className="flex gap-2"><span className="text-[#C89B3C]">•</span>Без аккаунта</li>
+            <li className="flex gap-2"><span className="text-[#C89B3C]">•</span>Без сервера</li>
+            <li className="flex gap-2"><span className="text-[#C89B3C]">•</span>localStorage только на устройстве, если используется</li>
+            <li className="flex gap-2"><span className="text-[#C89B3C]">•</span>Данные чек-ина не покидают браузер</li>
+          </ul>
+        </section>
+
+        <section className="space-y-2">
           <h2 className="text-lg text-[#e8e8ec] font-medium">Roadmap</h2>
           <div className="space-y-2 text-sm">
-            <div className="flex gap-2"><span className="text-[#C89B3C] font-mono shrink-0">v1.2</span><span className="text-[#c8c8cc]">карты + луна + действия</span></div>
-            <div className="flex gap-2"><span className="text-[#888892] font-mono shrink-0">v1.3</span><span className="text-[#888892]">локальные заметки / итоги</span></div>
+            <div className="flex gap-2"><span className="text-[#C89B3C] font-mono shrink-0">v1.3</span><span className="text-[#c8c8cc]">Final Public Release — карты, луна, действия, чек-ин</span></div>
             <div className="flex gap-2"><span className="text-[#888892] font-mono shrink-0">v1.4</span><span className="text-[#888892]">режимы Life / Business / Creator / Founder</span></div>
             <div className="flex gap-2"><span className="text-[#888892] font-mono shrink-0">v1.5</span><span className="text-[#888892]">AI Week Architect</span></div>
             <div className="flex gap-2"><span className="text-[#888892] font-mono shrink-0">v2.0</span><span className="text-[#888892]">персональные сценарии</span></div>
           </div>
         </section>
+
+        <div className="text-xs text-[#555560]">Cycle13 v1.3 Final Public Release</div>
 
         <section className="rounded-lg border border-[#2a2a32] bg-[#1a1a20] p-4">
           <p className="text-[#555560] text-xs leading-relaxed">

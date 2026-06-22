@@ -25,15 +25,19 @@ export interface Cycle13Week {
   endDate: string;
   moonMode: MoonMode;
   status: WeekStatus;
+  shortFormula: string;
   shortFocus: string;
   plainMeaning: string;
   mainQuestion: string;
   dailyMinimum: string;
+  dailyNormal: string;
+  dailyMaximum: string;
   dailyActions: string[];
   weeklyActions: string[];
   avoid: string[];
-  weekResult: string[];
   eveningQuestion: string;
+  whatToRecord: string[];
+  weekResult: string[];
   scorecard: ScorecardItem[];
 }
 
@@ -78,29 +82,122 @@ const SCORECARDS: Record<Suit, ScorecardItem[]> = {
     { metric: "Принятые решения", plan: "2" },
     { metric: "Очищенные задачи", plan: "3" },
     { metric: "Отключённые лишние обязательства", plan: "1" },
-    { metric: "Главный результат недели", plan: "1" },
+    { metric: "Закрытые источники хаоса", plan: "1" },
   ],
   hearts: [
     { metric: "Осознанные контакты", plan: "3" },
     { metric: "Закрытые подвисшие разговоры", plan: "1–3" },
     { metric: "Контакты, которые усиливают", plan: "5" },
     { metric: "Источники эмоционального шума", plan: "3" },
-    { metric: "Вечерние фиксации", plan: "5 дней" },
+    { metric: "Качество доверия", plan: "1 вывод" },
   ],
   clubs: [
     { metric: "Рабочие блоки сделаны", plan: "5" },
+    { metric: "Сделанные задачи с результатом", plan: "3" },
     { metric: "Обучение", plan: "1" },
     { metric: "Системные улучшения", plan: "1" },
-    { metric: "Задачи с результатом", plan: "3" },
-    { metric: "Главный результат недели", plan: "1" },
+    { metric: "Действия, а не размышления", plan: "5" },
   ],
   diamonds: [
     { metric: "Деньги посчитаны", plan: "1" },
     { metric: "Результат зафиксирован", plan: "1" },
     { metric: "Закрытые дела", plan: "3" },
+    { metric: "Материальный ресурс / оплата / итог", plan: "1" },
     { metric: "Решение: масштабировать / улучшить / закрыть", plan: "1" },
-    { metric: "Главный результат недели", plan: "1" },
   ],
+};
+
+// ── Action modes: suit × moon ─────────────────────────
+
+const ACTION_MODES: Record<Suit, Record<MoonMode, { min: string; normal: string; max: string }>> = {
+  spades: {
+    new: {
+      min: "Наметь 3 пункта, что нужно убрать на этой неделе.",
+      normal: "Закрой одну маленькую задачу, которая висит больше недели.",
+      max: "Составь полный список хвостов, выбери 3 для закрытия и начни с первого.",
+    },
+    waxing: {
+      min: "Убери одну лишнюю задачу из расписания сегодня.",
+      normal: "Откажись от одного обязательства, которое не даёт результата.",
+      max: "Очисти процесс: убери лишние шаги, встречи, согласования и оставь только нужное.",
+    },
+    full: {
+      min: "Посмотри прямо на узкое место — что мешает движению.",
+      normal: "Прими решение по слабому направлению: закрыть, заморозить или оставить.",
+      max: "Очисти календарь полностью, убери из системы всё, что забирает ресурс, зафиксируй решение.",
+    },
+    waning: {
+      min: "Закрой один хвост, который тянется давно.",
+      normal: "Убери один источник хаоса: почта, задачи, файлы, чаты.",
+      max: "Закрой все хвосты, которые можно закрыть за день, убери из системы всё лишнее, запиши что больше не тянешь.",
+    },
+  },
+  hearts: {
+    new: {
+      min: "Напиши одному человеку, с которым давно не общался.",
+      normal: "Наметь 3 людей, с которыми важно восстановить контакт, и напиши первому.",
+      max: "Составь список из 5–7 людей для усиления связи, наметь главный разговор недели и сделай первый шаг.",
+    },
+    waxing: {
+      min: "Напиши 5 людям, которые важны для твоего движения.",
+      normal: "Сделай один шаг к подвисшему разговору — напиши, позвони или договорись.",
+      max: "Отметь напротив каждого контакта: усиливает / забирает / требует ясности, проведи один честный разговор.",
+    },
+    full: {
+      min: "Проведи один честный разговор, который давно откладывается.",
+      normal: "Покажи идею или предложение 2–3 людям и собери отклик.",
+      max: "Прими решение по каждому контакту: кого усилить, кого ограничить, кого отпустить. Убери одну слабую связь.",
+    },
+    waning: {
+      min: "Закрой один подвисший контакт — напиши или честно отпусти.",
+      normal: "Убери один источник лишнего общения: чат, обязательство, контакт.",
+      max: "Закрой 1–3 подвисших разговора, убери 1–2 источника шума, зафиксируй кто усиливает, а кто забирает.",
+    },
+  },
+  clubs: {
+    new: {
+      min: "Наметь одну главную задачу недели, которую сделаешь руками.",
+      normal: "Определи, какую систему или рутину нужно запустить, и запиши 3 шага.",
+      max: "Составь план на неделю — 5 конкретных рабочих блоков, определи чему нужно научиться.",
+    },
+    waxing: {
+      min: "Сделай одно конкретное действие по главной задаче.",
+      normal: "Запусти один тест или эксперимент, который проверит гипотезу.",
+      max: "Собери один артефакт: страницу, скрипт, таблицу, черновик. Сделай 10 касаний по аудитории.",
+    },
+    full: {
+      min: "Прояви результат — покажи, опубликуй или отправь.",
+      normal: "Собери обратную связь по одному действию или продукту.",
+      max: "Прими решение: продолжать / менять / закрыть. Запусти то, что готово. Зафиксируй отклик.",
+    },
+    waning: {
+      min: "Заверши одну задачу, которая близка к финалу.",
+      normal: "Очисти рабочее пространство: файлы, задачи, вкладки, заметки.",
+      max: "Закрой один проект, который не даёт результата. Запиши главный результат недели.",
+    },
+  },
+  diamonds: {
+    new: {
+      min: "Наметь, что нужно посчитать и зафиксировать на этой неделе.",
+      normal: "Определи один главный финансовый фокус и запиши 3 важные цифры.",
+      max: "Составь план сбора данных по всем ключевым направлениям, определи решение, которое нужно принять.",
+    },
+    waxing: {
+      min: "Сделай 3 касания по людям, где может быть доход.",
+      normal: "Собери цифры по одной сделке, направлению или проекту.",
+      max: "Зафиксируй промежуточный результат — цифру, факт, вывод. Посчитай доход за неделю и сравни с планом.",
+    },
+    full: {
+      min: "Посчитай результат по одному направлению — выручка, конверсии, метрики.",
+      normal: "Прими одно решение: масштабировать / улучшить / закрыть.",
+      max: "Покажи цифры кому-то, кто должен их видеть. Собери все метрики за неделю в одном месте.",
+    },
+    waning: {
+      min: "Закрой одно незакрытое дело с результатом — посчитай, зафиксируй, реши.",
+      normal: "Убери одно убыточное или слабое направление — перестань тратить ресурс.",
+      max: "Запиши главный финансовый вывод недели. Закрой 2–3 незакрытые договорённости или сделки.",
+    },
+  },
 };
 
 // ── Daily actions: suit × moon ────────────────────────
@@ -321,16 +418,16 @@ const WEEKLY_ACTIONS: Record<Suit, Record<MoonMode, string[]>> = {
   },
 };
 
-// ── Daily minimum by suit ─────────────────────────────
+// ── Daily minimum by suit (fallback) ─────────────────
 
-const SUIT_DAILY: Record<Suit, string> = {
+const SUIT_DAILY_MIN: Record<Suit, string> = {
   spades: "Убери одно лишнее — задачу, контакт, обязательство или хвост.",
-  hearts: "Закрой один подвисший контакт или разговор: напиши, позвони или честно отпусти.",
+  hearts: "Закрой один подвисший контакт: напиши, позвони или честно отпусти.",
   clubs: "Сделай одно конкретное действие руками — не откладывай.",
   diamonds: "Зафиксируй один результат в цифрах или решении.",
 };
 
-// ── Avoid by suit — practical, not abstract ──────────
+// ── Avoid by suit — practical ────────────────────────
 
 const SUIT_AVOID: Record<Suit, string[]> = {
   spades: [
@@ -364,6 +461,15 @@ const SUIT_EVENING: Record<Suit, string> = {
   diamonds: "Что я получил сегодня, что доказано цифрами?",
 };
 
+// ── What to record by suit ────────────────────────────
+
+const SUIT_RECORD: Record<Suit, string[]> = {
+  spades: ["что убрано", "какие хвосты закрыты", "какие решения приняты", "что больше не тянем"],
+  hearts: ["кто усиливает", "кто забирает ресурс", "какие разговоры закрыты", "какой круг доверия яснее"],
+  clubs: ["какие задачи сделаны", "что запущено", "что изучено", "какая система создана"],
+  diamonds: ["сколько заработано", "что доказано", "что завершено", "что масштабировать"],
+};
+
 // ── Week result by suit ───────────────────────────────
 
 const SUIT_RESULT: Record<Suit, string[]> = {
@@ -382,6 +488,19 @@ const SUIT_FOCUS: Record<Suit, string> = {
   diamonds: "посчитать, зафиксировать, принять решение",
 };
 
+// ── Short formula builder ─────────────────────────────
+
+function buildShortFormula(rankInfo: RankInfo, suitInfo: typeof SUITS[1], moonMode: MoonMode): string {
+  const moon = MOON_MODES[moonMode];
+  const suitVerb: Record<Suit, string> = {
+    spades: "через очистку, отсечение и диагностику",
+    hearts: "через людей, энергию и доверие",
+    clubs: "через действие, работу и систему",
+    diamonds: "через результат, деньги и фиксацию",
+  };
+  return `${rankInfo.name} + ${suitInfo.name} + ${moon.name} = ${rankInfo.keywords[0]} ${suitVerb[suitInfo.id]} в режиме «${moon.action}».`;
+}
+
 // ── Week content generator ────────────────────────────
 
 function generateWeek(
@@ -397,6 +516,9 @@ function generateWeek(
   const suitInfo = SUITS[weekIndexInCycle];
   const card = `${rankInfo.shortName}${suitInfo.shortName}`;
   const moon = MOON_MODES[moonMode];
+  const actions = ACTION_MODES[suitInfo.id][moonMode];
+
+  const shortFormula = buildShortFormula(rankInfo, suitInfo, moonMode);
 
   const plainMeaning = `Неделя ${card}: ${rankInfo.name.toLowerCase()} — ${rankInfo.keywords[0]}. ${suitInfo.name} — ${suitInfo.meaning.toLowerCase()}. Лунный режим: ${moon.name.toLowerCase()} — ${moon.action}.`;
 
@@ -413,15 +535,19 @@ function generateWeek(
     endDate,
     moonMode,
     status,
+    shortFormula,
     shortFocus: SUIT_FOCUS[suitInfo.id],
     plainMeaning,
     mainQuestion: suitInfo.question,
-    dailyMinimum: SUIT_DAILY[suitInfo.id],
+    dailyMinimum: actions.min,
+    dailyNormal: actions.normal,
+    dailyMaximum: actions.max,
     dailyActions: DAILY_ACTIONS[suitInfo.id][moonMode],
     weeklyActions: WEEKLY_ACTIONS[suitInfo.id][moonMode],
     avoid: SUIT_AVOID[suitInfo.id],
-    weekResult: SUIT_RESULT[suitInfo.id],
     eveningQuestion: SUIT_EVENING[suitInfo.id],
+    whatToRecord: SUIT_RECORD[suitInfo.id],
+    weekResult: SUIT_RESULT[suitInfo.id],
     scorecard: SCORECARDS[suitInfo.id],
   };
 }
@@ -449,7 +575,7 @@ function buildAllWeeks(referenceDate?: Date): Cycle13Week[] {
 
       // Calculate moon mode from real approximate moon phase (middle of week)
       const weekMid = new Date(weekStart);
-      weekMid.setDate(weekMid.getDate() + 3); // day 4 of week
+      weekMid.setDate(weekMid.getDate() + 3);
       const moonPhase = getMoonPhase(weekMid);
       const moonMode = moonPhase.phase as MoonMode;
 
@@ -457,9 +583,7 @@ function buildAllWeeks(referenceDate?: Date): Cycle13Week[] {
       if (globalWeek < refGlobalWeek) status = "past";
       else if (globalWeek === refGlobalWeek) status = "active";
 
-      weeks.push(
-        generateWeek(c, w, globalWeek, startDate, endDate, moonMode, status),
-      );
+      weeks.push(generateWeek(c, w, globalWeek, startDate, endDate, moonMode, status));
     }
   }
 
@@ -512,6 +636,25 @@ export function getAllWeeks(referenceDate?: Date): Cycle13Week[] {
   return buildAllWeeks(referenceDate);
 }
 
+function regenerateForMoon(week: Cycle13Week, moonMode: MoonMode): Cycle13Week {
+  const rankInfo = RANKS[week.cycleNumber - 1] || RANKS[0];
+  const suitInfo = SUITS[week.weekIndexInCycle];
+  const moon = MOON_MODES[moonMode];
+  const actions = ACTION_MODES[suitInfo.id][moonMode];
+
+  return {
+    ...week,
+    moonMode,
+    dailyMinimum: actions.min,
+    dailyNormal: actions.normal,
+    dailyMaximum: actions.max,
+    dailyActions: DAILY_ACTIONS[suitInfo.id][moonMode],
+    weeklyActions: WEEKLY_ACTIONS[suitInfo.id][moonMode],
+    shortFormula: buildShortFormula(rankInfo, suitInfo, moonMode),
+    plainMeaning: `Неделя ${week.card}: ${rankInfo.name.toLowerCase()} — ${rankInfo.keywords[0]}. ${suitInfo.name} — ${suitInfo.meaning.toLowerCase()}. Лунный режим: ${moon.name.toLowerCase()} — ${moon.action}.`,
+  };
+}
+
 export function getWeekByDate(date: Date): Cycle13Week | null {
   const refDayIndex = getDayIndex(date);
   if (refDayIndex < 0) return null;
@@ -519,9 +662,8 @@ export function getWeekByDate(date: Date): Cycle13Week | null {
   const jokerStart = parseDate(JOKER_WEEK.startDate);
   const jokerEnd = parseDate(JOKER_WEEK.endDate);
   const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-  if (d >= jokerStart && d <= jokerEnd) return null; // Joker week
+  if (d >= jokerStart && d <= jokerEnd) return null;
 
-  // After next cycle start (2027-01-04) — wrap around
   const nextCycleStart = parseDate("2027-01-04");
   let effectiveDayIndex = refDayIndex;
   if (d >= nextCycleStart) {
@@ -540,20 +682,8 @@ export function getWeekByDate(date: Date): Cycle13Week | null {
   const realMoon = getMoonPhase(d);
   const realMode = realMoon.phase as MoonMode;
 
-  // If moon mode changed, regenerate actions for the correct moon mode
   if (realMode !== week.moonMode) {
-    const rankInfo = RANKS[cycleNumber - 1] || RANKS[0];
-    const suitInfo = SUITS[weekInCycle];
-    const card = `${rankInfo.shortName}${suitInfo.shortName}`;
-    const moon = MOON_MODES[realMode];
-
-    return {
-      ...week,
-      moonMode: realMode,
-      dailyActions: DAILY_ACTIONS[suitInfo.id][realMode],
-      weeklyActions: WEEKLY_ACTIONS[suitInfo.id][realMode],
-      plainMeaning: `Неделя ${card}: ${rankInfo.name.toLowerCase()} — ${rankInfo.keywords[0]}. ${suitInfo.name} — ${suitInfo.meaning.toLowerCase()}. Лунный режим: ${moon.name.toLowerCase()} — ${moon.action}.`,
-    };
+    return regenerateForMoon(week, realMode);
   }
 
   return week;
