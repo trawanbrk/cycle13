@@ -1,0 +1,3 @@
+cycle13.peso27.ru {
+    reverse_proxy cycle-os:3000
+}

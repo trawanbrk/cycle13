@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+:root {
+  --bg-graphite: #0f0f12;
+  --bg-card: #1a1a20;
+  --bg-card-hover: #22222a;
+  --border-subtle: #2a2a32;
+  --text-primary: #e8e8ec;
+  --text-secondary: #888892;
+  --text-muted: #555560;
+  --accent-spades: #6B7B9E;
+  --accent-hearts: #B8453A;
+  --accent-clubs: #3A8B5A;
+  --accent-diamonds: #C89B3C;
+}
+
+body {
+  background-color: var(--bg-graphite);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@theme inline {
+  --color-bg-graphite: #0f0f12;
+  --color-bg-card: #1a1a20;
+  --color-bg-card-hover: #22222a;
+  --color-border-subtle: #2a2a32;
+  --color-text-primary: #e8e8ec;
+  --color-text-secondary: #888892;
+  --color-text-muted: #555560;
+  --color-accent-spades: #6B7B9E;
+  --color-accent-hearts: #B8453A;
+  --color-accent-clubs: #3A8B5A;
+  --color-accent-diamonds: #C89B3C;
+}

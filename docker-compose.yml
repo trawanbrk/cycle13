@@ -1,0 +1,25 @@
+services:
+  cycle-os:
+    build: .
+    restart: unless-stopped
+    environment:
+      - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL:-https://cycle13.peso27.ru}
+    expose:
+      - "3000"
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - cycle-os
+
+volumes:
+  caddy_data:
+  caddy_config:
