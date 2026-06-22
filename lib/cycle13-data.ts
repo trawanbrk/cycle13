@@ -1,5 +1,6 @@
 // Cycle13 — Source of Truth: единая структура данных для 52 недель
 import { SUITS, RANKS, type Suit, type RankInfo } from "./constants";
+import { getMoonPhase } from "./moon";
 
 // ── Types ──────────────────────────────────────────────
 
@@ -185,8 +186,11 @@ function buildAllWeeks(referenceDate?: Date): Cycle13Week[] {
       const startDate = formatDate(weekStart);
       const endDate = formatDate(weekEnd);
 
-      // Calculate moon mode (approximate — cycles through 4 phases per 28-day cycle)
-      const moonMode = (["new", "waxing", "full", "waning"] as MoonMode[])[w - 1];
+      // Calculate moon mode from real approximate moon phase (middle of week)
+      const weekMid = new Date(weekStart);
+      weekMid.setDate(weekMid.getDate() + 3); // day 4 of week
+      const moonPhase = getMoonPhase(weekMid);
+      const moonMode = moonPhase.phase as MoonMode;
 
       let status: WeekStatus = "future";
       if (globalWeek < refGlobalWeek) status = "past";
@@ -268,7 +272,19 @@ export function getWeekByDate(date: Date): Cycle13Week | null {
   const globalWeek = (cycleNumber - 1) * 4 + weekInCycle;
 
   const weeks = buildAllWeeks(d);
-  return weeks[globalWeek - 1] || null;
+  const week = weeks[globalWeek - 1] || null;
+  if (!week) return null;
+
+  // Override moon mode with real calculation for today's date
+  const realMoon = getMoonPhase(d);
+  return {
+    ...week,
+    moonMode: realMoon.phase as MoonMode,
+    plainMeaning: week.plainMeaning.replace(
+      MOON_MODES[week.moonMode].name.toLowerCase(),
+      realMoon.name.toLowerCase(),
+    ),
+  };
 }
 
 export function getWeeksByCycle(cycleNumber: number, referenceDate?: Date): Cycle13Week[] {
