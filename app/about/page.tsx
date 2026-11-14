@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SEO } from "@/lib/seo";
 import AppShell from "@/components/AppShell";
+import DataExport from "@/components/DataExport";
 
 export const metadata: Metadata = {
   title: `${SEO.title} — О проекте`,
@@ -62,6 +63,7 @@ export default function AboutPage() {
           </ul>
         </section>
 
+        <DataExport />
         <section className="space-y-2">
           <h2 className="text-lg text-[#e8e8ec] font-medium">Roadmap</h2>
           <div className="space-y-2 text-sm">
